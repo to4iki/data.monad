@@ -1,0 +1,24 @@
+{
+    "name": "data.monad",
+    "version": "0.0.1",
+    "description": "monad structure",
+    "main": "index.js",
+    "directories": {
+        "test": "test"
+    },
+    "keywords": [
+        "monad"
+    ],
+    "author": "to4iki",
+    "license": "MIT",
+    "devDependencies": {
+        "gulp": "^3.9.0",
+        "gulp-babel": "^5.2.0",
+        "gulp-plumber": "^1.0.1",
+        "mocha": "^2.2.5"
+    },
+    "scripts": {
+        "build": "gulp build",
+         "test": "mocha"
+    }
+}
