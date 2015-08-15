@@ -1,24 +1,33 @@
 {
-    "name": "data.monad",
-    "version": "0.0.1",
-    "description": "monad structure",
-    "main": "index.js",
-    "directories": {
-        "test": "test"
-    },
-    "keywords": [
-        "monad"
-    ],
-    "author": "to4iki",
-    "license": "MIT",
-    "devDependencies": {
-        "gulp": "^3.9.0",
-        "gulp-babel": "^5.2.0",
-        "gulp-plumber": "^1.0.1",
-        "mocha": "^2.2.5"
-    },
-    "scripts": {
-        "build": "gulp build",
-         "test": "mocha"
-    }
+  "name": "data.monad",
+  "version": "0.0.1",
+  "description": "monad structure",
+  "main": "index.js",
+  "homepage": "https://github.com/to4iki/data.monad",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/to4iki/data.monad.git"
+  },
+  "directories": {
+    "test": "test"
+  },
+  "keywords": [
+    "monad"
+  ],
+  "files": [
+    "lib"
+  ],
+  "author": "to4iki",
+  "license": "MIT",
+  "devDependencies": {
+    "babel": "^5.8.21",
+    "espower-babel": "^3.2.0",
+    "mocha": "^2.2.5",
+    "power-assert": "^0.11.0"
+  },
+  "scripts": {
+    "build": "babel src --out-dir lib --source-maps-inline",
+    "watch": "babel src --out-dir lib --watch --source-maps-inline",
+    "test": "npm run build && mocha test/*.js"
+  }
 }

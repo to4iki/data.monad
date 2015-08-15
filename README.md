@@ -5,16 +5,18 @@ data.monad
 JavaScript monad
 
 ### task
-build(es6 convert to es5)
 
 ```
-$ npm run build
-```
+$ npm run                                                                                                                 ➜
+Lifecycle scripts included in data.monad:
+  test
+    npm run build && mocha test/*.js
 
-test
-
-```
-$ npm run test
+available via `npm run-script`:
+  build
+    babel src --out-dir lib --source-maps-inline
+  watch
+    babel src --out-dir lib --watch --source-maps-inline
 ```
 
 ### see also
