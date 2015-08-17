@@ -18,6 +18,12 @@ describe('Maybe', function() {
             assert(r.isEmpty === false);
         });
 
+        it('#isEqual', function() {
+            assert(r.isEqual(Just(1)) === true);
+            assert(r.isEqual(Just(2)) !== true);
+            assert(r.isEqual(Nothing) !== true);
+        });
+
         it('#toString', function() {
             assert(r.toString(), 'Just(1)');
         });
@@ -28,6 +34,10 @@ describe('Maybe', function() {
 
         it('#getOrElse', function() {
             assert(r.getOrElse(-1), 1);
+        });
+
+        it('#orElse', function() {
+            assert(r.getOrElse(function() { return -1 }), 1);
         });
 
         it('#map', function() {
@@ -43,6 +53,30 @@ describe('Maybe', function() {
             });
             assert(binded.get, 3);
         });
+
+        it('#foreach', function() {
+            var called = false
+            r.foreach(function(x) {
+                called = true;
+            });
+            assert(called === true);
+        });
+
+        it('#filter', function() {
+            var actual1 = r.filter(function(x) { return x === 1; });
+            assert(actual1.isDefined === true);
+
+            var actual2 = r.filter(function(x) { return x === 2; });
+            assert(actual2.isDefined !== true);
+        });
+
+        it('#reject', function() {
+            var actual1 = r.reject(function(x) { return x === 1; });
+            assert(actual1.isDefined !== true);
+
+            var actual2 = r.reject(function(x) { return x === 2; });
+            assert(actual2.isDefined === true);
+        });
     });
 
     context('when Nothing', function() {
@@ -56,6 +90,11 @@ describe('Maybe', function() {
             assert(r.isEmpty === true);
         });
 
+        it('#isEqual', function() {
+            assert(r.isEqual(Nothing) === true);
+            assert(r.isEqual(Just(1)) !== true);
+        });
+
         it('#toString', function() {
             assert(r.toString(), 'Nothing');
         });
@@ -66,6 +105,10 @@ describe('Maybe', function() {
 
         it('#getOrElse', function() {
             assert(r.getOrElse(-1), -1);
+        });
+
+        it('#orElse', function() {
+            assert(r.getOrElse(function() { return -1 }), -1);
         });
 
         it('#map', function() {
@@ -85,6 +128,24 @@ describe('Maybe', function() {
                 });
             });
             assert(binded.isEmpty === true);
+        });
+
+        it('#foreach', function() {
+            var called = false
+            r.foreach(function(x) {
+                called = true;
+            });
+            assert(called !== true);
+        });
+
+        it('#filter', function() {
+            var actual = r.filter(function(x) { return x === 1; });
+            assert(actual.isEmpty === true);
+        });
+
+        it('#reject', function() {
+            var actual = r.reject(function(x) { return x === 1; });
+            assert(actual.isEmpty === true);
         });
     });
 });

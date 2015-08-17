@@ -1,7 +1,7 @@
 'use strict';
 
 /**
- * Maybe[A] <: Show, Functor[A], Chain[A]
+ * Maybe[A] <: Eq, Show, Functor[A], Chain[A]
  */
 export class Maybe {
 
@@ -29,10 +29,16 @@ class Just {
         return false;
     }
 
+    // -- Eq
+
+    isEqual(a) {
+        return a.isDefined && (a.get === this.x)
+    }
+
     // -- Show
 
     toString() {
-        return 'Just(' + this.x + ')';
+        return `Just($(this.x))`;
     }
 
     // -- Extracting
@@ -43,6 +49,10 @@ class Just {
 
     getOrElse(_) {
         return this.x;
+    }
+
+    orElse(_) {
+        return this;
     }
 
     // -- Functor
@@ -56,6 +66,20 @@ class Just {
     bind(transform) {
         return transform(this.x);
     }
+
+    // -- Other
+
+    foreach(f) {
+        f(this.x);
+    }
+
+    filter(p) {
+        return (p(this.x)) ? this : Nothing;
+    }
+
+    reject(p) {
+        return this.filter(function(x) { return !p(x) });
+    }
 }
 
 class Nothing {
@@ -68,6 +92,12 @@ class Nothing {
 
     static get isEmpty() {
         return true;
+    }
+
+    // -- Eq
+
+    static isEqual(a) {
+        return a.isEmpty && this.isEmpty;
     }
 
     // -- Show
@@ -86,6 +116,10 @@ class Nothing {
         return or;
     }
 
+    static orElse(or) {
+        return or();
+    }
+
     // -- Functor
 
     static map() {
@@ -95,6 +129,20 @@ class Nothing {
     // -- Chain
 
     static bind() {
+        return this;
+    }
+
+    // -- Other
+
+    static foreach() {
+        return;
+    }
+
+    static filter(p) {
+        return this;
+    }
+
+    static reject(p) {
         return this;
     }
 }
