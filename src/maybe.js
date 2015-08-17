@@ -1,5 +1,8 @@
 'use strict';
 
+/**
+ * Maybe[A] <: Show, Functor[A], Chain[A]
+ */
 export class Maybe {
 
     static Just(x) {

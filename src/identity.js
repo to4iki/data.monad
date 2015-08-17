@@ -1,5 +1,8 @@
 'use strict';
 
+/**
+ * Identity <: Show, Chain
+ */
 export class Identity {
     constructor(x) {
         this.x = x;

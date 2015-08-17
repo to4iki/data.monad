@@ -30,7 +30,32 @@ interface M<T> {
 
 ### Identity
 
+```js
+new Identity(5).bind(x =>
+    new Identity(6).bind(x2 =>
+        new Identity(x + x2)
+    )
+);
+// => Identity(11)
+```
+
 ### Maybe
+
+```js
+Just(5).bind(x =>
+    Just(6).bind(x2 =>
+        Just(x + x2)
+    )
+);
+// => Just(11)
+
+Just(5).bind(x =>
+    Nothing.bind(x2 =>
+        Just(x + x2)
+    )
+);
+// => Nothing
+```
 
 ## Installation
 
