@@ -2,8 +2,17 @@
   "name": "data.monad",
   "version": "0.0.1",
   "description": "monad structure",
-  "main": "index.js",
+  "main": "lib/index.js",
   "homepage": "https://github.com/to4iki/data.monad",
+  "author": {
+    "name": "tsk takezawa",
+    "email": "tsk.take815@gmail.com",
+    "url": "https://github.com/to4iki"
+  },
+  "license": {
+    "type": "MIT",
+    "url": "http://to4iki.mit-license.org/"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/to4iki/data.monad.git"
@@ -12,13 +21,12 @@
     "test": "test"
   },
   "keywords": [
-    "monad"
+    "monad",
+    "maybe"
   ],
   "files": [
     "lib"
   ],
-  "author": "to4iki",
-  "license": "MIT",
   "devDependencies": {
     "babel": "^5.8.21",
     "mocha": "^2.2.5"

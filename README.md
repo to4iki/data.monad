@@ -1,23 +1,46 @@
 data.monad
 ==========
 
+[![License][license-image]][license-url]
+
 ## Description
-JavaScript monad
+javascript monad structure.
 
-### task
+### Type Signature
 
+interface.
+
+```js
+interface M<T> {
+    // return
+    function unit<T>(value: T): M<T> {
+    }
+
+    // >>=
+    function bind<T, U>(instance: M<T>, transform: (value: T) => M<U>): M<U> {
+    }
+}
 ```
-$ npm run                                                                                                                 ➜
-Lifecycle scripts included in data.monad:
-  test
-    npm run build && mocha test/*.js
 
-available via `npm run-script`:
-  build
-    babel src --out-dir lib --source-maps-inline
-  watch
-    babel src --out-dir lib --watch --source-maps-inline
-```
+1. bind(unit(x), f) ≡ f(x)
+2. bind(m, unit) ≡ m
+3. bind(bind(m, f), g) ≡ bind(m, x ⇒ bind(f(x), g))
 
-### see also
-- [JavaScriptのモナド | プログラミング | POSTD](http://postd.cc/monads-in-javascript/))
+## Usage
+
+### Identity
+
+### Maybe
+
+## Installation
+
+## Author
+
+[to4iki](https://github.com/to4iki)
+
+## Licence
+
+[MIT](http://to4iki.mit-license.org/)
+
+[license-url]: http://to4iki.mit-license.org/
+[license-image]: http://img.shields.io/badge/license-MIT-brightgreen.svg
