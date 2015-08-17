@@ -1,5 +1,15 @@
 'use strict';
 
+export class Maybe {
+    static Just(x) {
+        return new Just(x)
+    }
+
+    static Nothing() {
+        return Nothing
+    }
+}
+
 class Just {
     constructor(x) {
         this.x = x
@@ -11,6 +21,22 @@ class Just {
         return 'Just(' + this.x + ')';
     }
 
+    // -- Extracting
+
+    get() {
+        return this.x;
+    }
+
+    getOrElse(_) {
+        return this.x;
+    }
+
+    // -- Functor
+
+    map(transform) {
+        return new Just(transform(this.x));
+    }
+
     // -- Chain
 
     bind(transform) {
@@ -18,21 +44,19 @@ class Just {
     }
 }
 
-var Nothing = {
-    toString: function() {
+class Nothing {
+
+    static get
+
+    static toString() {
         return 'Nothing';
-    },
-    bind: function() {
+    }
+
+    static map() {
+        return this;
+    }
+
+    static bind() {
         return this;
     }
 }
-
-// exec
-
-var result = new Just(5).bind(value =>
-    Nothing.bind(value2 =>
-        new Just(value + value2)
-    )
-);
-
-console.log(result.toString());
