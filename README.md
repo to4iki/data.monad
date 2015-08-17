@@ -1,6 +1,8 @@
 data.monad
 ==========
 
+[![NPM package][npm-image]][npm-url]
+[![Build Status][travis-image]][travis-url]
 [![License][license-image]][license-url]
 
 ## Description
@@ -66,6 +68,12 @@ Just(5).bind(x =>
 ## Licence
 
 [MIT](http://to4iki.mit-license.org/)
+
+[travis-url]: http://travis-ci.org/to4iki/data.monad
+[travis-image]: https://travis-ci.org/to4iki/data.monad.svg?branch=master
+
+[npm-url]: https://npmjs.org/package/data.monad
+[npm-image]: https://badge.fury.io/js/data.monad.svg
 
 [license-url]: http://to4iki.mit-license.org/
 [license-image]: http://img.shields.io/badge/license-MIT-brightgreen.svg
