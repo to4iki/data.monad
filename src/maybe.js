@@ -14,7 +14,7 @@ export class Maybe {
     }
 }
 
-class Just {
+export class Just {
     constructor(x) {
         this.x = x
     }
@@ -82,7 +82,7 @@ class Just {
     }
 }
 
-class Nothing {
+export class Nothing {
 
     // -- Predicates
 

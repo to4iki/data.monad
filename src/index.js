@@ -1,6 +1,6 @@
 'use strict';
 
-module.exports = {
-    Identity: require('./identity').Identity,
-    Maybe: require('./maybe').Maybe
-};
+import { Identity } from './identity';
+import { Maybe, Just, Nothing } from './maybe';
+
+export { Identity, Maybe, Just, Nothing }
