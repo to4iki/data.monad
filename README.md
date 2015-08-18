@@ -24,9 +24,9 @@ interface M<T> {
 }
 ```
 
-1. bind(unit(x), f) ≡ f(x)
-2. bind(m, unit) ≡ m
-3. bind(bind(m, f), g) ≡ bind(m, x ⇒ bind(f(x), g))
+1. bind(unit(x), f) == f(x)
+2. bind(m, unit) == m
+3. bind(bind(m, f), g) == bind(m, x => bind(f(x), g))
 
 ## Usage
 
@@ -57,6 +57,17 @@ Just(5).bind(x =>
     )
 );
 // => Nothing
+```
+
+do syntax
+
+```js
+doM(function*() {
+    let v1 = yield Just(5);
+    let v2 = yield Just(6);
+    return Just(v1 + v2);
+}());
+// => Just(11)
 ```
 
 ## Installation

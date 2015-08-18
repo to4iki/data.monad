@@ -1,6 +1,7 @@
 'use strict';
 
+import { doM } from './prelude';
 import { Identity } from './identity';
 import { Maybe, Just, Nothing } from './maybe';
 
-export { Identity, Maybe, Just, Nothing }
+export { doM, Identity, Maybe, Just, Nothing }
