@@ -11,7 +11,7 @@ export class Identity {
     // -- Show
 
     toString() {
-        return `Identity($(this.x))`;
+        return `Identity(${this.x})`;
     }
 
     // -- Chain

@@ -38,7 +38,7 @@ export class Just {
     // -- Show
 
     toString() {
-        return `Just($(this.x))`;
+        return `Just(${this.x})`;
     }
 
     // -- Extracting
