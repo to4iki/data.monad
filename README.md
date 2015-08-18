@@ -66,7 +66,7 @@ doM(function*() {
     let v1 = yield Just(5);
     let v2 = yield Just(6);
     return Just(v1 + v2);
-}());
+}());
 // => Just(11)
 ```
 
