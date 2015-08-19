@@ -70,7 +70,43 @@ doM(function*() {
 // => Just(11)
 ```
 
+### Future
+
+`type Future = Promise`
+
+```js
+let future1 = doM(function*() {
+    let v1 = yield Future.resolve(5);
+    let v2 = yield Future.resolve(6);
+    return v1 + v2;
+}());
+
+future1.bind(v => console.log(v * v)); // 121
+
+let future2 = doM(function*() {
+    let v1 = yield Future.resolve(5);
+    let v2 = yield Future.reject(new Error('Failure'));
+    return v1 + v2;
+}());
+
+future2.bind(v => console.log(v * v)); // empty
+future2.catch(e => console.log(e.message)); // 'Failure'
+```
+
 ## Installation
+
+### npm
+Install
+
+```
+$ npm i -D data.monad
+```
+
+Use
+
+```javascript
+var Monad = require('data.monad);
+```
 
 ## Author
 

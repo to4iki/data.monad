@@ -1,8 +1,6 @@
 'use strict';
 
-export { doM }
-
-function doM(g) {
+export function doM (g) {
     function step(x) {
         let res = g.next(x);
         if (res.done) {
