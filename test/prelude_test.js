@@ -5,7 +5,6 @@ var Monad = require('../lib/')
 var doM = Monad.doM;
 var Just = Monad.Just;
 var Nothing = Monad.Nothing;
-var Future = Monad.Future;
 
 describe('Prelude', function() {
 
@@ -36,7 +35,7 @@ describe('Prelude', function() {
             });
         });
 
-        describe('future', function() {
+        describe('promise', function() {
 
             function failTest() {
                 throw new Error("Expected promise to be rejected but it was fulfilled");
@@ -44,8 +43,8 @@ describe('Prelude', function() {
 
             it('should be bind', function() {
                 var r = doM(function*() {
-                    var v1 = yield Future.resolve(5);
-                    var v2 = yield Future.resolve(6);
+                    var v1 = yield Promise.resolve(5);
+                    var v2 = yield Promise.resolve(6);
                     return v1 + v2;
                 }());
 
@@ -56,8 +55,8 @@ describe('Prelude', function() {
 
             it('should be not bind', function() {
                 var r = doM(function*() {
-                    var v1 = yield Future.resolve(5);
-                    var v2 = yield Future.reject(new Error('Failure'));
+                    var v1 = yield Promise.resolve(5);
+                    var v2 = yield Promise.reject(new Error('Failure'));
                     return v1 + v2;
                 }());
 

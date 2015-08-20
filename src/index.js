@@ -3,6 +3,6 @@
 import { doM } from './prelude';
 import { Identity } from './identity';
 import { Just, Nothing } from './maybe';
-import Future from './future'
+import './promise';
 
-export { doM, Identity, Just, Nothing, Future }
+export { doM, Identity, Just, Nothing }

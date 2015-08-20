@@ -52,7 +52,7 @@ new Just(5).bind(x =>
 // => Just(11)
 
 new Just(5).bind(x =>
-    new Nothing.bind(x2 =>
+    Nothing.bind(x2 =>
         new Just(x + x2)
     )
 );
@@ -70,27 +70,25 @@ doM(function*() {
 // => Just(11)
 ```
 
-### Future
-
-`type Future = Promise`
+### Promise
 
 ```js
-let future1 = doM(function*() {
-    let v1 = yield Future.resolve(5);
-    let v2 = yield Future.resolve(6);
+let p1 = doM(function*() {
+    let v1 = yield Promise.resolve(5);
+    let v2 = yield Promise.resolve(6);
     return v1 + v2;
 }());
 
-future1.bind(v => console.log(v * v)); // 121
+p1.bind(v => console.log(v * v)); // 121
 
-let future2 = doM(function*() {
-    let v1 = yield Future.resolve(5);
-    let v2 = yield Future.reject(new Error('Failure'));
+let p2 = doM(function*() {
+    let v1 = yield Promise.resolve(5);
+    let v2 = yield Promise.reject(new Error('Failure'));
     return v1 + v2;
 }());
 
-future2.bind(v => console.log(v * v)); // empty
-future2.catch(e => console.log(e.message)); // 'Failure'
+p2.bind(v => console.log(v * v)); // empty
+p2.catch(e => console.log(e.message)); // 'Failure'
 ```
 
 ## Installation
