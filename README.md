@@ -44,16 +44,16 @@ new Identity(5).bind(x =>
 ### Maybe
 
 ```js
-Just(5).bind(x =>
-    Just(6).bind(x2 =>
-        Just(x + x2)
+new Just(5).bind(x =>
+    new Just(6).bind(x2 =>
+        new Just(x + x2)
     )
 );
 // => Just(11)
 
-Just(5).bind(x =>
-    Nothing.bind(x2 =>
-        Just(x + x2)
+new Just(5).bind(x =>
+    new Nothing.bind(x2 =>
+        new Just(x + x2)
     )
 );
 // => Nothing
@@ -63,14 +63,50 @@ do syntax
 
 ```js
 doM(function*() {
-    let v1 = yield Just(5);
-    let v2 = yield Just(6);
-    return Just(v1 + v2);
+    let v1 = yield new Just(5);
+    let v2 = yield new Just(6);
+    return new Just(v1 + v2);
 }());
 // => Just(11)
 ```
 
+### Future
+
+`type Future = Promise`
+
+```js
+let future1 = doM(function*() {
+    let v1 = yield Future.resolve(5);
+    let v2 = yield Future.resolve(6);
+    return v1 + v2;
+}());
+
+future1.bind(v => console.log(v * v)); // 121
+
+let future2 = doM(function*() {
+    let v1 = yield Future.resolve(5);
+    let v2 = yield Future.reject(new Error('Failure'));
+    return v1 + v2;
+}());
+
+future2.bind(v => console.log(v * v)); // empty
+future2.catch(e => console.log(e.message)); // 'Failure'
+```
+
 ## Installation
+
+### npm
+Install
+
+```
+$ npm i -D data.monad
+```
+
+Use
+
+```javascript
+var Monad = require('data.monad');
+```
 
 ## Author
 

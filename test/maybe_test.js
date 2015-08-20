@@ -1,14 +1,14 @@
 'use strict';
 
 var assert = require('assert');
-var Maybe = require('../lib/').Maybe;
-var Just = Maybe.Just;
-var Nothing = Maybe.Nothing;
+var Monad = require('../lib/');
+var Just = Monad.Just;
+var Nothing = Monad.Nothing;
 
 describe('Maybe', function() {
 
     context('when Just', function() {
-        var r = Just(1)
+        var r = new Just(1)
 
         it('#isDefined', function() {
             assert(r.isDefined === true);
@@ -19,8 +19,8 @@ describe('Maybe', function() {
         });
 
         it('#isEqual', function() {
-            assert(r.isEqual(Just(1)) === true);
-            assert(r.isEqual(Just(2)) !== true);
+            assert(r.isEqual(new Just(1)) === true);
+            assert(r.isEqual(new Just(2)) !== true);
             assert(r.isEqual(Nothing) !== true);
         });
 
@@ -47,8 +47,8 @@ describe('Maybe', function() {
 
         it('#bind', function() {
             var binded = r.bind(function(x) {
-                return Just(2).bind(function(x2) {
-                    return Just(x + x2);
+                return new Just(2).bind(function(x2) {
+                    return new Just(x + x2);
                 });
             });
             assert(binded.get, 3);
@@ -92,7 +92,7 @@ describe('Maybe', function() {
 
         it('#isEqual', function() {
             assert(r.isEqual(Nothing) === true);
-            assert(r.isEqual(Just(1)) !== true);
+            assert(r.isEqual(new Just(1)) !== true);
         });
 
         it('#toString', function() {
@@ -124,7 +124,7 @@ describe('Maybe', function() {
         it('#bind', function() {
             var binded = r.bind(function(x) {
                 return Nothing.bind(function(x2) {
-                    return Just(x + x2);
+                    return new Just(x + x2);
                 });
             });
             assert(binded.isEmpty === true);

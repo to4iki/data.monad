@@ -1,19 +1,8 @@
 'use strict';
 
 /**
- * Maybe[A] <: Eq, Show, Functor[A], Chain[A]
- */
-export class Maybe {
-
-    static Just(x) {
-        return new Just(x)
-    }
-
-    static get Nothing() {
-        return Nothing
-    }
-}
-
+* Just[A] <: Eq, Show, Functor[A], Chain[A]
+*/
 export class Just {
     constructor(x) {
         this.x = x
@@ -82,6 +71,9 @@ export class Just {
     }
 }
 
+/**
+* Nothing[A] <: Eq, Show, Functor[A], Chain[A]
+*/
 export class Nothing {
 
     // -- Predicates
