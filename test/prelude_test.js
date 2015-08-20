@@ -1,10 +1,11 @@
 'use strict';
 
 var assert = require('assert');
-var doM = require('../lib/').doM;
-var Just = require('../lib/').Just;
-var Nothing = require('../lib/').Nothing;
-var Future = require('../lib/').Future;
+var Monad = require('../lib/')
+var doM = Monad.doM;
+var Just = Monad.Just;
+var Nothing = Monad.Nothing;
+var Future = Monad.Future;
 
 describe('Prelude', function() {
 

@@ -44,16 +44,16 @@ new Identity(5).bind(x =>
 ### Maybe
 
 ```js
-Just(5).bind(x =>
-    Just(6).bind(x2 =>
-        Just(x + x2)
+new Just(5).bind(x =>
+    new Just(6).bind(x2 =>
+        new Just(x + x2)
     )
 );
 // => Just(11)
 
-Just(5).bind(x =>
-    Nothing.bind(x2 =>
-        Just(x + x2)
+new Just(5).bind(x =>
+    new Nothing.bind(x2 =>
+        new Just(x + x2)
     )
 );
 // => Nothing
@@ -63,9 +63,9 @@ do syntax
 
 ```js
 doM(function*() {
-    let v1 = yield Just(5);
-    let v2 = yield Just(6);
-    return Just(v1 + v2);
+    let v1 = yield new Just(5);
+    let v2 = yield new Just(6);
+    return new Just(v1 + v2);
 }());
 // => Just(11)
 ```
@@ -105,7 +105,7 @@ $ npm i -D data.monad
 Use
 
 ```javascript
-var Monad = require('data.monad);
+var Monad = require('data.monad');
 ```
 
 ## Author

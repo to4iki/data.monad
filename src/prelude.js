@@ -1,7 +1,10 @@
 'use strict';
 
-export function doM (g) {
-    function step(x) {
+/**
+ * do syntax.
+ */
+export function doM(g) {
+    let step = x => {
         let res = g.next(x);
         if (res.done) {
             return res.value;
